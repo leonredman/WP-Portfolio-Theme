@@ -1,4 +1,6 @@
+<!-- add header php code -->
 <?php get_header(); ?>
+
     <section id="top">
       <div class="container">
         <div class="info">
@@ -20,23 +22,29 @@
           <div class="circle"></div>
           <h1>services</h1>
         </div>
-        <div class="services-container">
-          <div class="box blue">
-            <i class="fas fa-trophy"></i>
-            <h5>Best Quality</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="services-container">
+            <?php
+              $mypod = pods('service');
+              $mypod->find('name ASC');
+              ?>
+
+              <?php while ( $mypod->fetch() ) : ?>
+
+                <?php
+                //  set our variables and echo name from services in dashboard
+                $name= $mypod->field('name');
+                $content= $mypod->field('content');
+                $permalink= $mypod->field('permalink');
+                $icon_class= $mypod->field('icon_class');
+                $border_color= $mypod->field('border_color');
+                ?>
+                <div class="box <?php echo $border_color ?>">
+                  <i class="<?php echo $icon_class ?>"></i>
+                  <h5><?php echo $name ?></h5>
+                  <p><?php echo $content ?></p>
+                </div>
+              <?php endwhile; ?>
           </div>
-          <div class="box red">
-            <i class="fas fa-plane"></i>
-            <h5>Best Quality</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div class="box yellow">
-            <i class="fas fa-money-check-alt"></i>
-            <h5>Best Quality</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-        </div>
       </div>
     </section>
     <section id="portfolio-section">
@@ -136,21 +144,30 @@
             </div>
           </div>
           <div class="info">
-            <div class="info-box">
-              <h4>Graphic Artist - Nike</h4>
-              <span class="date">June 2012 - July 2013</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </p>
-            </div>
-            <div class="info-box">
-              <h4>Graphic Artist - Nike</h4>
-              <span class="date">June 2012 - July 2013</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
-            <div class="info-box">
-              <h4>Graphic Artist - Nike</h4>
-              <span class="date">June 2012 - July 2013</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div>
+            <?php
+              $mypod = pods('experience');
+              $mypod->find('start_end_date ASC');
+              ?>
+
+              <?php while ( $mypod->fetch() ) : ?>
+
+                <?php
+                //  set our variables and echo name from services in dashboard
+                $name= $mypod->field('name');
+                $content= $mypod->field('content');
+                $start_end_date= $mypod->field('start_end_date');
+                $location= $mypod->field('location');
+                $permalink= $mypod->field('permalink');
+
+                ?>
+                <div class="info-box">
+                  <h4><?php echo $name ?> - <?php echo $location ?></h4>
+                  <span class="date"><?php echo $start_end_date?></span>
+                  <p><?php echo $content ?></p>
+                </div>
+              <?php endwhile; ?>
+
+
           </div>
         </div>
       </div>
