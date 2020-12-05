@@ -98,7 +98,7 @@
 
 
           <a href="<?php echo $permalink; ?>" class="box image<?php echo $loopIndex; ?>">
-            <div class="image" style='background: url("  <?php echo $image_properties[url]; ?>");
+            <div class="image" style='background: url("<?php echo $image_properties[url]; ?>");
               height: 100%;
               width: 100%;
               background-size: cover;
