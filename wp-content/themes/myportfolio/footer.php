@@ -17,7 +17,7 @@
   <h6>Graphic Artist</h6>
 </footer>
 
-<script src="<?php echo get_bloginfo('template_directory'); ?>/js/app.js"></script>
+<script type="module" src="<?php echo get_bloginfo('template_directory'); ?>/js/app.js"></script>
 
 <?php wp_footer(); ?>
 </body>
